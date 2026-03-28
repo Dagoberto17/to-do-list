@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<!-- Proyecto: To Do List
+		Autor: Dagoberto
+		Descripción: Aplicación web para gestionar tareas (añadir, editar, eliminar, marcar completadas).
+		Fecha: Marzo 2026 -->
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>To Do List</title>
+	</head>
+	<body>
+		<!-- ################### Titulo ################### -->
+		<h1 class="titulo" id="titulo">My Todo List</h1>
+
+		<!-- ################### Formulario ################### -->
+		<section class="formulario" id="formulario">
+			<form class="forma" id="forma">
+				<!-- Campo de texto para escribir la tarea -->
+				<input
+					type="text"
+					class="input_texto"
+					id="input_texto"
+					placeholder="Escribe una tarea y presiona enviar"
+				/>
+				<!-- Botón para enviar la tarea al listado -->
+				<button type="submit" class="enviar" id="enviar">Enviar</button>
+			</form>
+		</section>
+
+		<!-- ################### List6 ################### -->
+		<section class="lista" id="lista">
+			<!-- ################### Elementos de la lista ################### -->
+			<div class="elemento">
+				<!-- Ícono circular: marcar tarea como completada -->
+				<i
+					class="fa-regular fa-circle circulo"
+					aria-label="Marcar tarea como completada"
+				></i>
+				<!-- Texto de la tarea -->
+				<p class="tarea">Nota de ejemplo</p>
+				<!-- Ícono de eliminar tarea -->
+				<i
+					class="fa-solid fa-delete-left eliminar"
+					aria-label="Eliminar tarea"
+				></i>
+				<!-- Ícono de editar tarea -->
+				<i
+					class="fa-solid fa-pen-to-square editar"
+					aria-label="Editar tarea"
+				></i>
+			</div>
+
+			<div class="elemento">
+				<i
+					class="fa-regular fa-circle circulo"
+					aria-label="Marcar tarea como completada"
+				></i>
+				<p class="tarea">Nota de ejemplo 1</p>
+				<i
+					class="fa-solid fa-delete-left eliminar"
+					aria-label="Eliminar tarea"
+				></i>
+				<i
+					class="fa-solid fa-pen-to-square editar"
+					aria-label="Editar tarea"
+				></i>
+			</div>
+
+			<div class="elemento">
+				<i
+					class="fa-regular fa-circle circulo"
+					aria-label="Marcar tarea como completada"
+				></i>
+				<p class="tarea">Nota de ejemplo 2</p>
+				<i
+					class="fa-solid fa-delete-left eliminar"
+					aria-label="Eliminar tarea"
+				></i>
+				<i
+					class="fa-solid fa-pen-to-square editar"
+					aria-label="Editar tarea"
+				></i>
+			</div>
+
+			<div class="elemento">
+				<i
+					class="fa-regular fa-circle circulo"
+					aria-label="Marcar tarea como completada"
+				></i>
+				<p class="tarea">Nota de ejemplo 3</p>
+				<i
+					class="fa-solid fa-delete-left eliminar"
+					aria-label="Eliminar tarea"
+				></i>
+				<i
+					class="fa-solid fa-pen-to-square editar"
+					aria-label="Editar tarea"
+				></i>
+			</div>
+		</section>
+
+		<!-- ################### Scripts ################### -->
+		<script
+			src="https://kit.fontawesome.com/670f42bd3a.js"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
