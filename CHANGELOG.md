@@ -15,3 +15,33 @@
 ### Changed
 
 - Se reemplazó el archivo `index.html` vacío por la versión estructurada y documentada.
+
+## [0.2.0] – 2026-04-03
+
+### Added
+
+- Se creó el archivo `style.css` con estilos modernos en tonos naranjas:
+  - Tipografía Roboto importada desde Google Fonts.
+  - Estilos globales con fondo claro y texto gris.
+  - Estilos para título, formulario, campo de texto y botón de envío.
+  - Animaciones en hover para botón y elementos de la lista.
+  - Estilos diferenciados para íconos de completar, eliminar y editar tareas.
+  - Sombra y transición en los elementos de la lista para dar efecto moderno.
+- Se añadieron animaciones de interacción en íconos:
+  - Completar → color naranja y escala.
+  - Eliminar → color rojo y escala.
+  - Editar → color azul y escala.
+- Comentario en HTML para futura interfaz de edición y confirmación de eliminación de tarea.
+
+### Changed
+
+- `index.html`:
+  - Se corrigió el placeholder del input: ahora dice _"Escribe una tarea"_ en lugar de _"Escribe una tarea y presiona enviar"_.
+  - Se añadieron `id` a los íconos (`circulo`, `eliminar`, `editar`) para diferenciarlos en futuras funciones.
+  - Se mejoró la documentación interna con comentarios más claros en cada sección.
+
+### Notes
+
+- El diseño aún **no es responsive**, está optimizado para escritorio con proporciones adaptadas pero sin media queries.
+- Esta versión marca la primera integración de estilos CSS junto con la estructura HTML corregida.
+- Próximos pasos: implementar la lógica en JavaScript para añadir, editar, eliminar y marcar tareas como completadas.
