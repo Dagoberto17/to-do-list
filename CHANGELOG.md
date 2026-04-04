@@ -45,3 +45,23 @@
 - El diseño aún **no es responsive**, está optimizado para escritorio con proporciones adaptadas pero sin media queries.
 - Esta versión marca la primera integración de estilos CSS junto con la estructura HTML corregida.
 - Próximos pasos: implementar la lógica en JavaScript para añadir, editar, eliminar y marcar tareas como completadas.
+
+## [0.3.0] - 2026-04-04
+
+### Added
+
+- Vinculación de todos los archivos `.js` al `index.html`.
+- Creación de la clase `Nota` en el archivo `dato.js` para la generación de nuevas tareas en la lista.
+- Constante de almacenamiento `listaNotas` para cada objeto `Nota` en el archivo `app.js`.
+  - Pruebas de validación de los atributos `id` y `nuevaNota`, con salida en consola para verificación.
+
+### Changed
+
+- Se renombró el archivo `agregar.js` a `dato.js` para mayor claridad en la lógica de datos.
+
+### Notes
+
+- Esta versión marca el inicio de la lógica en JavaScript dentro del proyecto.
+- Se realizaron pruebas iniciales de creación y almacenamiento de notas, aún sin integración completa en la interfaz.
+- El cambio de nombre de `agregar.js` a `dato.js` busca mayor claridad en la organización de archivos.
+- Próximos pasos: implementar funciones completas para añadir, editar, eliminar y marcar tareas como completadas.
