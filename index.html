@@ -10,12 +10,12 @@
 		<link rel="stylesheet" href="style.css" />
 		<title>To Do List</title>
 	</head>
-	<body>
+	<body onload="cargarNotas()">
 		<!-- ################### Titulo ################### -->
 		<h1 class="titulo" id="titulo">My Todo List</h1>
 
 		<!-- ################### Formulario ################### -->
-		<section class="formulario" id="formulario">
+		<section class="formulario" id="formulario" onsubmit="return false;">
 			<form class="forma" id="forma">
 				<!-- Campo de texto para escribir la tarea -->
 				<input
@@ -25,7 +25,14 @@
 					placeholder="Escribe una tarea "
 				/>
 				<!-- Botón para enviar la tarea al listado -->
-				<button type="submit" class="enviar" id="enviar">Enviar</button>
+				<button
+					type="submit"
+					class="enviar"
+					id="enviar"
+					onclick="agregarNota()"
+				>
+					Enviar
+				</button>
 			</form>
 		</section>
 
@@ -48,63 +55,6 @@
 					id="eliminar"
 				></i>
 				<!-- Ícono de editar tarea -->
-				<i
-					class="fa-solid fa-pen-to-square editar"
-					aria-label="Editar tarea"
-					id="editar"
-				></i>
-			</div>
-
-			<div class="elemento">
-				<i
-					class="fa-regular fa-circle circulo"
-					aria-label="Marcar tarea como completada"
-					id="circulo"
-				></i>
-				<p class="tarea">Nota de ejemplo 1</p>
-				<i
-					class="fa-solid fa-delete-left eliminar"
-					aria-label="Eliminar tarea"
-					id="eliminar"
-				></i>
-				<i
-					class="fa-solid fa-pen-to-square editar"
-					aria-label="Editar tarea"
-					id="editar"
-				></i>
-			</div>
-
-			<div class="elemento">
-				<i
-					class="fa-regular fa-circle circulo"
-					aria-label="Marcar tarea como completada"
-					id="circulo"
-				></i>
-				<p class="tarea">Nota de ejemplo 2</p>
-				<i
-					class="fa-solid fa-delete-left eliminar"
-					aria-label="Eliminar tarea"
-					id="eliminar"
-				></i>
-				<i
-					class="fa-solid fa-pen-to-square editar"
-					aria-label="Editar tarea"
-					id="editar"
-				></i>
-			</div>
-
-			<div class="elemento">
-				<i
-					class="fa-regular fa-circle circulo"
-					aria-label="Marcar tarea como completada"
-					id="circulo"
-				></i>
-				<p class="tarea">Nota de ejemplo 3</p>
-				<i
-					class="fa-solid fa-delete-left eliminar"
-					aria-label="Eliminar tarea"
-					id="eliminar"
-				></i>
 				<i
 					class="fa-solid fa-pen-to-square editar"
 					aria-label="Editar tarea"
