@@ -65,3 +65,24 @@
 - Se realizaron pruebas iniciales de creación y almacenamiento de notas, aún sin integración completa en la interfaz.
 - El cambio de nombre de `agregar.js` a `dato.js` busca mayor claridad en la organización de archivos.
 - Próximos pasos: implementar funciones completas para añadir, editar, eliminar y marcar tareas como completadas.
+
+## [0.4.0] – 2026-08-04
+
+### Added
+
+- Creación de la función `cargarNotas` para que, en cuanto cargue la página, se actualicen las notas automáticamente.
+- Vinculación de la función `cargarNotas` mediante el atributo `onload="cargarNotas()"` al `body` en `index.html`.
+- Creación de la función `crearNotasHTML` para dar formato a las notas nuevas que se vayan agregando.
+- Creación de la función `agregarNota` para añadir nuevas notas desde el formulario. En caso de que el input `input_texto` esté vacío, salta la alerta _"⚠️ Agrega una nota válida"_.
+  - Vinculación de la función `agregarNota` al botón `enviar` en `index.html` mediante un evento `onclick`.
+- Validación de que el array `listaNotas` almacene correctamente las notas nuevas con sus respectivos `id`, con salida en consola.
+
+### Changed
+
+- Se renombró el parámetro de la clase `Nota` de `nuevaNota` a `descripción` en el archivo `dato.js`.
+  - Se ajustaron los métodos getter y setter para reflejar el nuevo nombre del parámetro `descripción`.
+- Se eliminaron todos los elementos de ejemplo en `index.html`, dejando únicamente uno para mantener la estructura del código HTML.
+
+### Notes
+
+- Próximos pasos: implementar funciones completas para editar, eliminar y marcar tareas como completadas.
