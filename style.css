@@ -14,6 +14,10 @@ Fecha: Marzo 2026
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+}
+
+/* Fondo y color base solo al body */
+body {
 	background-color: #f9f9f9;
 	color: #333;
 }
@@ -107,7 +111,7 @@ Fecha: Marzo 2026
 .tarea {
 	flex: 1;
 	margin: 0 15px;
-	background-color: #fff;
+
 	font-size: 1rem;
 	color: #444;
 }
@@ -123,7 +127,6 @@ Fecha: Marzo 2026
 	transition: all 0.2s ease-in;
 	padding: 3px;
 	margin: 0 10px;
-	background: #fff;
 }
 
 /* Animaciones */
@@ -145,8 +148,26 @@ Fecha: Marzo 2026
 	transform: scale(1.1);
 }
 
+/* ===== Estilo de tarea completada ===== */
+.elemento.completada {
+	background-color: #f0f0f0;
+	border: 1px solid #ccc;
+	opacity: 0.8;
+	transform: scale(0.99);
+	transition: all 0.3s ease-in-out;
+}
+
+.elemento.completada .tarea {
+	text-decoration: line-through;
+	color: #555;
+	font-style: italic;
+}
+
+.circulo.fa-circle-check {
+	color: #2e7d32;
+}
+
 /* ========== Próximos estilos ========== */
 /* Agregar estilos para tarea completada */
 /* Agregar diseño responsive en el futuro */
-/* Agregar diseño para tarea completada */
 /* Agregar diseño para confirmaciones de edición y eliminación */
