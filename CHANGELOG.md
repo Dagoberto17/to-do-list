@@ -86,3 +86,27 @@
 ### Notes
 
 - Próximos pasos: implementar funciones completas para editar, eliminar y marcar tareas como completadas.
+
+## [0.5.0] - 2026-12-04
+
+### Added
+
+- Creación de función `eliminarNotas` para eliminar notas en `app.js`.
+  - Vinculación de `eliminarNotas` mediante un evento onclick al botón `eliminar` en `index.html` y en la función `crearNotasHTML` en `app.js`.
+- Creación de función `marcarCompletada` para completar las notas.
+  - Vinculación de `marcarCompletada` en el botón `circulo` en `index.html` y en la función `crearNotasHTML` en `app.js`.
+- Implementación de estilos en `style.css` para tareas completadas:
+  - Fondo diferenciado y opacidad reducida.
+  - Animación ligera al marcar como completada.
+  - Texto tachado e itálico para indicar finalización.
+  - Ícono de check con color verde sobrio.
+
+### Changed
+
+### Changed
+
+- Se eliminaron los archivos vacíos `eliminar.js` y `modificar.js` al consolidar toda la lógica en `app.js`, simplificando la estructura del proyecto y evitando archivos innecesarios.
+
+### Notes
+
+- Próximos pasos: implementar funciones completas para editar e interfaz para confirmaciones de borrado y edición.
