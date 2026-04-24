@@ -42,19 +42,20 @@ function crearNotasHTML(nota) {
                 onclick="marcarCompletada(this)"
             ></i>
             <!-- Texto de la tarea -->
-            <p class="tarea">${nota.descripción}</p>
+            <p class="tarea" id="tarea">${nota.descripción}</p>
             <!-- Ícono de eliminar tarea -->
             <i
                 class="fa-solid fa-delete-left eliminar"
                 aria-label="Eliminar tarea"
                 id="eliminar"
-                onclick="eliminarNotas()"
+                onclick="eliminarNotas(${nota.id})"
             ></i>
             <!-- Ícono de editar tarea -->
             <i
                 class="fa-solid fa-pen-to-square editar"
                 aria-label="Editar tarea"
                 id="editar"
+                onclick="editarNotas(this,${nota.id})"
             ></i>
         </div>`;
     return elemento;
@@ -100,16 +101,55 @@ function marcarCompletada(icono) {
 
     const elemento = icono.parentElement; //Obtenemos el objeto padre (en este caso el div con clase "elemento")
     elemento.classList.toggle("completada"); //Le agregamos la clase "completada"
-
 }
 
 // Diferencia:
 // toggle → alterna (agrega o quita según el caso)
 // add → siempre agrega la clase (si ya está, no la duplica)
 
+// ========== Función editar notas ==========
+function editarNotas(icono, id) {
+    let indice = listaNotas.findIndex(nota => nota.id === id); //Obtenemos ID
+    const objeto = listaNotas[indice]; //Asignamos el objeto seleccionado a la variable
+
+    // Subir al contenedor y buscar el <p>
+    const div = icono.parentElement; //Obtenemos el div principal
+    const p = div.querySelector(".tarea"); //Obtenemos el elemento con la clase tarea
+
+    // Crear input dinámico
+    let input = document.createElement("input"); //Creamos input
+    input.type = "text"; // Le damos tipo texto
+    input.value = objeto.descripción; //Asignamos de valor el parámetro descripción del objeto
+    input.className = "tarea"; //Le damos la clase de tarea
+
+    // Reemplazar el <p> por el input
+    p.replaceWith(input);//Reemplazamos el tag de <p> por el de <input>
+
+    //Hacemos que al momento de dar click al icono se seleccione de manera automática el nuevo input
+    setTimeout(() => {
+        input.focus();
+        input.select();
+    }, 0);
+
+    // Guardar cambios al presionar Enter
+    input.addEventListener("keydown", (tecla) => { //Cuando demos click a la tecla enter
+        if (tecla.key === "Enter") {
+            objeto.descripción = input.value; //Hacemos que el valor del input se convierta en la descripción del objeto 
+            p.textContent = objeto.descripción; //Hacemos que el contenido de p sea igual a la descripción del objeto
+            input.replaceWith(p); //Regresamos de <input> a <p>
+        }
+    });
+
+    // Guardar cambios al perder foco
+    input.addEventListener("blur", () => { //Cuando se de click afuera hago lo mismo que al presionar enter
+        objeto.descripción = input.value;
+        p.textContent = objeto.descripción;
+        input.replaceWith(p);
+    });
+}
 // ========== Próximos pasos ==========
 // Corregir de cuando se elimina/agrega una nota se borran los estilos de tarea completada
-// Agregar función de edición de notas
+// Agregar localStorage para que se guarden las notas de manera local y no se pierdan
 
 
 
