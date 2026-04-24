@@ -103,10 +103,19 @@
 
 ### Changed
 
-### Changed
-
 - Se eliminaron los archivos vacíos `eliminar.js` y `modificar.js` al consolidar toda la lógica en `app.js`, simplificando la estructura del proyecto y evitando archivos innecesarios.
 
 ### Notes
 
 - Próximos pasos: implementar funciones completas para editar e interfaz para confirmaciones de borrado y edición.
+
+## [0.6.0] - 2026-22-04
+
+### Added
+
+- Creación de la función `editarNotas` para editar las notas en el dom.
+  - Vinculación de `editarNotas` mediante un evento onclick al botón `editar` en `index.html` y en la función `crearNotasHTML` en `app.js`.
+
+### Notes
+
+- Próximos pasos: corregir bug que al momento de agregar o eliminar alguna tarea los estilos de las tareas completados se borran.
