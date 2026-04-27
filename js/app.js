@@ -31,30 +31,39 @@ function cargarNotas() {
 
 // ========== Función para crear el elemento HTML de cada nota ==========
 function crearNotasHTML(nota) {
+    let completadaClass;
+    let iconClass;
+
+    // Decidimos las clases según el estado con if...else
+    if (nota.estado === "completado") {
+        completadaClass = "completada";       // activa estilos CSS de tarea completada
+        iconClass = "fa-circle-check";        // ícono verde con check
+    } else {
+        completadaClass = "";                 // no aplica estilos extra
+        iconClass = "fa-circle";              // ícono vacío
+    }
+
     let elemento = `
         <!-- ################### Elemento de la lista ################### -->
-        <div class="elemento">
+        <div class="elemento ${completadaClass}">
             <!-- Ícono circular: marcar tarea como completada -->
             <i
-                class="fa-regular fa-circle circulo"
+                class="fa-regular ${iconClass} circulo"
                 aria-label="Marcar tarea como completada"
-                id="circulo"
-                onclick="marcarCompletada(this)"
+                onclick="marcarCompletada(this,${nota.id})"
             ></i>
             <!-- Texto de la tarea -->
-            <p class="tarea" id="tarea">${nota.descripción}</p>
+            <p class="tarea">${nota.descripción}</p>
             <!-- Ícono de eliminar tarea -->
             <i
                 class="fa-solid fa-delete-left eliminar"
                 aria-label="Eliminar tarea"
-                id="eliminar"
                 onclick="eliminarNotas(${nota.id})"
             ></i>
             <!-- Ícono de editar tarea -->
             <i
                 class="fa-solid fa-pen-to-square editar"
                 aria-label="Editar tarea"
-                id="editar"
                 onclick="editarNotas(this,${nota.id})"
             ></i>
         </div>`;
@@ -87,20 +96,18 @@ function eliminarNotas(id) {
 }
 
 // ========== Función completar notas ==========
-function marcarCompletada(icono) {
-    const tarea = document.querySelector(".tarea");
-    tarea.classList.toggle("completada"); // Alterna la clase "completada" en el texto (tachado/normal)
+function marcarCompletada(icono, id) {
+    let indice = listaNotas.findIndex(nota => nota.id === id);
+    const objeto = listaNotas[indice];
 
-    if (icono.classList.contains("fa-circle")) { // Si el ícono actual es círculo vacío
-        icono.classList.add("fa-circle-check"); // Agrega el ícono de círculo con check
-        icono.classList.remove("fa-circle");    // Quita el ícono de círculo vacío
+    if (objeto.estado === "pendiente") {
+        objeto.estado = "completado";
     } else {
-        icono.classList.add("fa-circle");       // Regresa al ícono de círculo vacío
-        icono.classList.remove("fa-circle-check"); // Quita el ícono de círculo con check
+        objeto.estado = "pendiente";
     }
 
-    const elemento = icono.parentElement; //Obtenemos el objeto padre (en este caso el div con clase "elemento")
-    elemento.classList.toggle("completada"); //Le agregamos la clase "completada"
+    // Regeneramos la lista para que se refleje el estado en el DOM
+    cargarNotas();
 }
 
 // Diferencia:
@@ -148,7 +155,6 @@ function editarNotas(icono, id) {
     });
 }
 // ========== Próximos pasos ==========
-// Corregir de cuando se elimina/agrega una nota se borran los estilos de tarea completada
 // Agregar localStorage para que se guarden las notas de manera local y no se pierdan
 
 
