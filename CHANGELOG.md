@@ -119,3 +119,27 @@
 ### Notes
 
 - Próximos pasos: corregir bug que al momento de agregar o eliminar alguna tarea los estilos de las tareas completados se borran.
+
+## [0.7.0] - 2026-27-04
+
+### Fixed
+
+- Se corrigió el bug que provocaba que los estilos de las tareas completadas se borraran al agregar o eliminar notas.
+  - Ahora el estado de cada nota se guarda en el atributo `estado` del objeto y se refleja correctamente en el DOM.
+
+### Changed
+
+- Clase `Nota`:
+  - Se agregó el atributo `_estado` inicializado en `"pendiente"`.
+  - Se implementaron los métodos `get estado` y `set estado` para manipular el estado de cada nota.
+- Función `crearNotasHTML`:
+  - Se modificó para generar dinámicamente las clases CSS (`completada`, `fa-circle-check`, `fa-circle`) en base al atributo `estado` del objeto.
+  - Se reemplazó la lógica estática por un bloque `if...else` que decide qué clases aplicar según el estado.
+- Función `marcarCompletada`:
+  - Se reescribió para alternar el estado de la nota entre `"pendiente"` y `"completado"` usando `if...else`.
+  - Se eliminó la dependencia de `classList.toggle` en el DOM y ahora se regenera la lista con `cargarNotas()` para reflejar el estado persistente.
+
+### Notes
+
+- Próximos pasos: implementar diseño responsive y modo oscuro de la app.
+- Implementar local storage para que se guarden de manera local todos los datos.
