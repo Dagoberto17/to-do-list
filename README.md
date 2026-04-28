@@ -15,8 +15,9 @@ Prueba la aplicación aquí: [To-Do List en GitHub Pages](https://dagoberto17.gi
 - Persistencia en LocalStorage
 
 ## 📸 Capturas
-![Vista principal de la app](assets/to_do_list.png)
-![Demo en acción](assets/to_do_list_demo.gif)
+| Vista principal | Demo en acción |
+|-----------------|----------------|
+| ![Vista principal de la app](assets/to_do_list.png) | ![Demo en acción](assets/to_do_list_demo.gif) |
 
 ## 📄 Licencia
 Este proyecto está bajo la licencia MIT.
