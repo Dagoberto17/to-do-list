@@ -5,10 +5,7 @@
 
 // ========== Constante para guardar todas las notas ==========
 const listaNotas = [
-    new Nota("Hacer ejercicio"),
-    new Nota("Pagar renta"),
-    new Nota("Poner gasolina"),
-    new Nota("Agregar modo oscuro a esta app")
+
 ];
 
 //Prueba de que el array funcione correctamente
@@ -20,6 +17,7 @@ console.log(listaNotas[0].nuevaNota); //Devuelve "Hacer ejercicio"
 
 // ========== Función para cargar notas ==========
 function cargarNotas() {
+    cargarAlmacenamiento();
     let notasHTML = "";
     // Recorremos el array listaNotas y generamos el HTML de cada nota
     for (let nota of listaNotas) {
@@ -81,6 +79,7 @@ function agregarNota() {
         alert("⚠️ Agrega una nota válida"); // Si el input está vacío, mostramos alerta
     }
 
+    guardarAlmacenamiento();
     cargarNotas(); // Recargamos la lista para mostrar las notas actualizadas
     input.value = ""; // Limpiamos el campo de texto después de enviar
 }
@@ -92,7 +91,9 @@ console.log(listaNotas); // Verificamos que el nuevo objeto se guarde correctame
 function eliminarNotas(id) {
     let indice = listaNotas.findIndex(nota => nota.id === id); //Obtenemos la posición
     listaNotas.splice(indice, 1); //Indicamos que debe de borrar del array la nota 
+    guardarAlmacenamiento();
     cargarNotas(); //Recargamos las notas
+
 }
 
 // ========== Función completar notas ==========
@@ -107,6 +108,7 @@ function marcarCompletada(icono, id) {
     }
 
     // Regeneramos la lista para que se refleje el estado en el DOM
+    guardarAlmacenamiento();
     cargarNotas();
 }
 
@@ -144,6 +146,7 @@ function editarNotas(icono, id) {
             objeto.descripción = input.value; //Hacemos que el valor del input se convierta en la descripción del objeto 
             p.textContent = objeto.descripción; //Hacemos que el contenido de p sea igual a la descripción del objeto
             input.replaceWith(p); //Regresamos de <input> a <p>
+            guardarAlmacenamiento();
         }
     });
 
@@ -152,8 +155,43 @@ function editarNotas(icono, id) {
         objeto.descripción = input.value;
         p.textContent = objeto.descripción;
         input.replaceWith(p);
+        guardarAlmacenamiento();
     });
+
+
 }
+
+// ========== Local Storage ==========
+// Guardamos en el cache del navegador
+function guardarAlmacenamiento() {
+    localStorage.setItem("lista_notas", JSON.stringify(listaNotas)); //Guardamos en el localStorage el array listaNotas convertido en cadena
+}
+//Obtenemos los datos y convertimos de cadena a array de nuevo
+function cargarAlmacenamiento() {
+    const data = localStorage.getItem("lista_notas"); //Mandamos llama al archivo del localStorage
+    if (data) { //Forma abreviada de decir que queremos que data sea un valor valido
+        const notasConvertidas = JSON.parse(data); //Convertimos de cadena a Array la data
+
+        // Vaciar el array manteniendo referencia para evitar duplicarlo
+        listaNotas.length = 0;
+
+        // Reconstruir cada objeto como instancia de Nota
+        for (let nota of notasConvertidas) {
+            let nuevaNota = new Nota(nota._descripción); //Creamos una nueva instancia (entrada) en el array con la descripción guardada en el JSON
+            nuevaNota.estado = nota._estado;   // Usamos el método set del objeto para asignarle el estado que corresponde en el JSON
+            nuevaNota._id = nota._id;          // Asignamos "a la brava" (porque solo hay método get) el id que corresponde en el JSON
+            listaNotas.push(nuevaNota); //Damos la orden de que agregue este objeto al array
+        }
+
+        // Actualizar contador para que no se repitan IDs
+        if (listaNotas.length > 0) { //Verifica que el array no este vació
+            Nota.contadorNotas = Math.max(...listaNotas.map(n => n.id));
+            // |"..." Indica que sean números "sueltos"  en vez de array   | "listaNotas.map" Recorre el array y va creando sus id dependiendo del objeto
+        }
+    }
+}
+
+
 // ========== Próximos pasos ==========
 // Agregar localStorage para que se guarden las notas de manera local y no se pierdan
 
