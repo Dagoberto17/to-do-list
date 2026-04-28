@@ -143,3 +143,17 @@
 
 - Próximos pasos: implementar diseño responsive y modo oscuro de la app.
 - Implementar local storage para que se guarden de manera local todos los datos.
+
+## [0.8.0] - 2026-28-04
+
+### Added
+
+- Creación de la función `guardarAlmacenamiento` en `app.js` para guardar los datos de manera local en la cache del navegador.
+  - Vinculación a las funciones de `editarNotas`, `agregarNotas` y `eliminarNotas` para agregar o modificar los cambios hechos en el DOM en el Local Storage.
+- Creación de la función `cargarAlmacenamiento` en `app.js` para mandar llamar los datos locales de la cache del navegador.
+  - Vinculación a la función `cargarNotas` para que cada vez que haya una actualización se carguen los datos en pantalla.
+
+### Notes
+
+- Próximos pasos: implementar prioridades y categorías a las notas, filtrar por categoría, prioridad o estado.
+- Implementar modo oscuro.
